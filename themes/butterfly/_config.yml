@@ -271,10 +271,125 @@ footer:
     enable: true
     since: 2025
   # Copyright of theme and framework
-  copyright:
-    enable: true
-    version: true
-  custom_text:
+  copyright: false
+    # enable: true
+    # version: true
+  custom_text: |  # 自定义页脚文本（支持HTML）
+    <style>
+      .footer {
+        text-align: center;
+        position: relative;
+      }
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .social-links i {
+        color: #8400ff;
+      }
+      .social-link {
+        color: #8a2be2;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background: rgba(138, 43, 226, 0.1);
+      }
+      .social-link:hover {
+        color: #892be294;
+        background: #892be294;
+        transform: translateY(-3px) scale(1.2);
+        box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        text-decoration: none !important; 
+      }
+      .footer p {
+        margin: 0.5rem 0;
+        line-height: 1;
+      }
+      .copyright {
+        font-size: 1.1rem; 
+        color: #c08bdf;
+        font-weight: 400;
+      }
+      .tagline {
+        font-size: 0.8rem;
+        color: #8a2be2;
+        font-style: italic;
+        font-weight: 500;
+      }
+      .visitor-count {
+        font-size: 0.75rem;
+        color: rgba(219, 142, 255, 0.658);
+        font-weight: 300;
+      }
+      #visitorCount {
+        font-weight: bold;
+      }
+    </style>
+    <div class="footer">
+      <div class="social-links">
+        <a href="https://github.com/0yunx" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://space.bilibili.com/1639097420" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="bilibili" title="bilibili">
+          <i class="fab fa-bilibili"></i>
+        </a>
+      </div>
+      <p class="copyright">© 2025 khuatcoungのblog - 所有权利保留</p>
+      <p class="tagline">> Stay curious, stay hacking, stay anime! <</p>
+      <p class="visitor-count">访问量: <span id="visitorCount">1024</span> | 你是第 <span id="dailyVisitor">1</span> 位今日访客</p>
+    </div>
+    <script>
+      // 确保DOM加载完成后执行
+      document.addEventListener('DOMContentLoaded', function() {
+        // 模拟访问量增长
+        function updateVisitorCount() {
+          const countElement = document.getElementById('visitorCount');
+          let count = parseInt(countElement.textContent) || 1024;
+          // 从localStorage获取或初始化计数
+          const storedCount = localStorage.getItem('totalVisitors');
+          if (storedCount) {
+            count = parseInt(storedCount);
+            countElement.textContent = count;
+          }
+          // 每日访客计数
+          const today = new Date().toDateString();
+          const dailyData = JSON.parse(localStorage.getItem('dailyVisitors') || '{"date":"", "count":0}');
+          if (dailyData.date !== today) {
+            dailyData.date = today;
+            dailyData.count = 0;
+          }
+          dailyData.count += 1;
+          document.getElementById('dailyVisitor').textContent = dailyData.count;
+          localStorage.setItem('dailyVisitors', JSON.stringify(dailyData));
+          // 每30秒随机增加访问量
+          setInterval(() => {
+            count += Math.floor(Math.random() * 3);
+            countElement.textContent = count;
+            localStorage.setItem('totalVisitors', count.toString());
+          }, 30000);
+        }
+        updateVisitorCount();
+        // 添加点击动画效果
+        const socialLinks = document.querySelectorAll('.social-link');
+        socialLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            this.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+              this.style.transform = '';
+            }, 300);
+          });
+        });
+      });
+    </script>
+
+
 
 # --------------------------------------
 # Aside Settings
@@ -404,11 +519,11 @@ darkmode:
   end:
 
 # Show scroll percent in scroll-to-top button
-rightside_scroll_percent: false
+rightside_scroll_percent: true  # 是否在返回顶部按钮中显示滚动百分比 
 
-# Don't modify the following settings unless you know how they work
-# Choose: readmode,translate,darkmode,hideAside,toc,chat,comment
-# Don't repeat the same value
+# 除非你知道这些设置的工作原理，否则不要修改以下设置 
+# 选择要在右下角显示的功能项，选项包括：readmode（阅读模式）、translate（繁简转换）、darkmode（暗黑模式）、hideAside（隐藏侧边栏）、toc（目录）、chat（聊天）、comment（评论） 
+# 不要重复使用相同的值 
 rightside_item_order:
   enable: false
   # Default: readmode,translate,darkmode,hideAside
