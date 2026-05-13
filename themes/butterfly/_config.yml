@@ -281,35 +281,36 @@ footer:
 # --------------------------------------
 
 aside:
-  enable: true
-  hide: false
+  enable: true  # 是否启用侧边栏
+  hide: false # 是否默认隐藏侧边栏
   # Show the button to hide the aside in bottom right button
-  button: true
-  mobile: true
+  button: true # 是否在右下角显示隐藏侧边栏的按钮
+  mobile: true  # 在移动端是否显示
   # Position: left / right
-  position: right
+  position: left
   display:
-    archive: true
-    tag: true
-    category: true
+    archive: true  # 归档
+    tag: true # 标签
+    category: true # 分类
   card_author:
-    enable: true
-    description:
-    button:
+    enable: true  # 是否显示作者卡片
+    description:  # 作者描述（支持HTML）
+    button: # 关注按钮
       enable: true
       icon: fab fa-github
       text: Follow Me
       link: https://www.187360.xyz/
   card_announcement:
-    enable: true
+    enable: true # 是否显示公告卡片
     content: This is my Blog
   card_recent_post:
     enable: true
     # If set 0 will show all
-    limit: 5
+    limit: 3
     # Sort: date / updated
     sort: date
-    sort_order:
+    sort_order: 4
+  # 最新评论卡片
   card_newest_comments:
     enable: false
     sort_order:
