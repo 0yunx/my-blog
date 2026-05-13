@@ -36,18 +36,18 @@ menu:
 
 code_blocks:
   # Code block theme: darker / pale night / light / ocean / false
-  theme: light
-  macStyle: false
-  # Code block height limit (unit: px)
-  height_limit: false
-  word_wrap: false
+  theme: darker
+  macStyle: true
+  # 代码块高度限制（单位：px，false表示不限制）
+  height_limit: 400 
+  word_wrap: true
 
   # Toolbar
   copy: true
   language: true
   # true: shrink the code blocks | false: expand the code blocks | none: expand code blocks and hide the button
   shrink: false
-  fullpage: false
+  fullpage: true
 
 # Social media links
 # Formal:
@@ -202,7 +202,7 @@ index_post_content:
 
 toc:
   post: true
-  page: false
+  page: true
   number: true
   expand: false
   # Only for post
@@ -215,6 +215,7 @@ post_copyright:
   author_href:
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  author_href: https://www.187360.xyz/
 
 # Sponsor/reward
 reward:
@@ -250,17 +251,17 @@ related_post:
 # false: disable pagination
 post_pagination: 1
 
-# Displays outdated notice for a post
+# 文章过期提示
 noticeOutdate:
-  enable: false
+  enable: true
   # Style: simple / flat
   style: flat
   # When will it be shown
   limit_day: 365
   # Position: top / bottom
   position: top
-  message_prev: It has been
-  message_next: days since the last update, the content of the article may be outdated.
+  message_prev: 本文最后更新于
+  message_next: 天前，部分内容可能已失效
 
 # --------------------------------------
 # Footer Settings
@@ -934,14 +935,14 @@ display_mode: light
 
 # Configuration for beautifying the content of the article
 beautify:
-  enable: false
+  enable: true
   # Specify the field to beautify (site or post)
   field: post
   # Specify the icon to be used as a prefix for the title, such as '\f0c1'
-  title_prefix_icon:
+  title_prefix_icon: '\f0e7'
   # Specify the color of the title prefix icon, such as '#F47466'
-  title_prefix_icon_color:
-
+  title_prefix_icon_color: '#8a2be2'
+ 
 
 # 全局字体设置
 # 除非知道如何运作，否则不要修改以下设置
