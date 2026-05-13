@@ -11,18 +11,24 @@
 
 nav:
   # Navigation bar logo image
-  logo:
+  logo: 
   display_title: true
   display_post_title: true
   # Whether to fix navigation bar
-  fixed: false
+  fixed: true
+  bg: "#6a0dad" # 使用主题主色调
+  text_color: "#ffffff" # 白色文字更清晰
+  hover_color: "#e6d3ff" # 浅紫色悬停效果
 
+# 菜单配置（格式：菜单名: 路径 || 图标类）
+# 支持二级菜单（缩进两个空格）
 menu:
-  Tags: /tags/ || fas fa-tags
-  # Home: / || fas fa-home
-  # List||fas fa-list:
-  #   Music: /music/ || fas fa-music
-  #   Movie: /movies/ || fas fa-video
+  首页: / || fas fa-home
+  归档: /archives/ || fas fa-archive
+  分类: /categories/ || fas fa-folder-open
+  标签: /tags/ || fas fa-tags
+  # 留言板: /comments/ || fas fa-comments
+  关于: /about/ || fas fa-user
 
 # --------------------------------------
 # Code Blocks Settings
@@ -472,31 +478,38 @@ math:
 # Search
 # --------------------------------------
 
-search:
-  # Choose: algolia_search / local_search / docsearch
-  # leave it empty if you don't need search
-  use:
-  placeholder:
+search: 
+  # 选择搜索方式：algolia_search（Algolia 搜索） / local_search（本地搜索） / docsearch（Docsearch 搜索） 
+  # 若不需要搜索功能，留空即可。 
+  use: local_search
+  # 搜索框默认提示文字（支持多语言）
+  placeholder: "输入关键词…" 
+ 
+  # Algolia 搜索配置 
+  algolia_search: 
+    # 每页显示的搜索结果数量 
+    hitsPerPage: 6 
+ 
+  # 本地搜索配置 
+  local_search: 
+    enable: true      # 是否启用本地搜索
+    # 界面文本定制
+    labels:
+      input_placeholder: "输入关键词…" 
+      hits_empty: "没有找到与「${query}」相关的内容 😭"  # 空搜索结果提示
+    # 动画效果配置
+    animation: 
+      enable: true    # 是否启用动画效果
+      duration: 0.3   # 动画持续时间（秒）
+    # 是否在页面加载时预加载搜索数据，设置为 true 预加载，false 不预加载 
+    preload: ture 
+    # 每篇文章显示的前 n 条搜索结果，设置为 -1 显示所有结果 
+    top_n_per_article: 1 
+    # 是否将 HTML 字符串转换为可读文本，设置为 true 转换，false 不转换 
+    unescape: false 
+    # 本地搜索所需的 CDN 地址 
+    CDN: 
 
-  # Algolia Search
-  algolia_search:
-    # Number of search results per page
-    hitsPerPage: 6
-
-  # Local Search
-  local_search:
-    # Preload the search data when the page loads.
-    preload: false
-    # Show top n results per article, show all results by setting to -1
-    top_n_per_article: 1
-    # Unescape html strings to the readable one.
-    unescape: false
-    # Enable pagination for search results
-    pagination:
-      enable: false
-      # Number of search results per page
-      hitsPerPage: 8
-    CDN:
 
   # Docsearch
   # https://docsearch.algolia.com/
@@ -1065,9 +1078,9 @@ css_prefix: true
 # Insert the code to head (before '</head>' tag) and the bottom (before '</body>' tag)
 inject:
   head:
-    # - <link rel="stylesheet" href="/xxx.css">
+    - <link rel="stylesheet" href="/css/custom.css"> 
   bottom:
-    # - <script src="xxxx"></script>
+    - <script defer src="/js/cursor.js"></script> 
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work

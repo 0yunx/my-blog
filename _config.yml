@@ -14,7 +14,10 @@ timezone: 'Asia/Shanghai'
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://www.187360.xyz/
-permalink: :year/:month/:day/:title/
+permalink: posts/:abbrlink/
+abbrlink:
+  alg: crc32  # 算法可选 crc16（默认）或 crc32
+  rep: hex    # 进制可选 dec（默认）或 hex
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -102,3 +105,9 @@ theme: butterfly
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+
+nofollow:
+  enable: true
+  exclude:
+    - 187360.xyz  # 排除自身域名或友链
