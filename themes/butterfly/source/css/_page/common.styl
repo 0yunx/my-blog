@@ -5,11 +5,11 @@
 
 .layout
   display: flex
-  flex: 1 auto
-  margin: 0 auto
-  padding: 40px 15px
-  max-width: 1200px
-  width: 100%
+  flex: 1 auto           // 自动填充剩余空间
+  margin: 0 auto         // 水平居中
+  padding: 40px 15px     // 内边距
+  max-width: 70%      // 最大宽度
+  width: 100%            // 默认100%宽度
 
   +maxWidth900()
     flex-direction: column
