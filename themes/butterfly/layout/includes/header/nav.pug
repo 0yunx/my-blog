@@ -14,16 +14,16 @@ nav#nav
   #nav-menus-container
     // 菜单主体部分
     #menus
-      // 搜索按钮
-      if theme.search.use
-        #search-button
-          span.site-page.social-icon.search
-            i.fas.fa-search.fa-fw
-            span= ' ' + _p('search.title')
-      
       // 菜单项
       if theme.menu
         != partial('includes/header/menu_item', {}, {cache: true})
+
+  #nav-right
+    if theme.search.use
+      #search-button
+        span.site-page.social-icon.search
+          i.fas.fa-search.fa-fw
+          span= ' ' + _p('search.title')
 
     // 移动端汉堡菜单按钮（保持原位置）
     #toggle-menu

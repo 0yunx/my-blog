@@ -111,3 +111,6 @@ nofollow:
   enable: true
   exclude:
     - 187360.xyz  # 排除自身域名或友链
+aplayer:
+  meting: true
+  asset_inject: false
