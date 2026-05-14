@@ -55,8 +55,10 @@ code_blocks:
 social:
   fab fa-github: https://github.com/0yunx || Github || '#FF69B4'
   # fa-solid fa-code: https://blog.csdn.net/weixin_74811095 || CSDN || '#FF69B4'
-  fa-solid fa-codeforces: https://codeforces.com/profile/yun123456 || Codeforces || '#FF69B4'
   fab fa-bilibili: https://space.bilibili.com/1639097420 || bilibili || '#FF69B4'
+  iconfont icon-codeforces: https://codeforces.com/profile/yun123456 || Codeforces || '#FF69B4'
+  iconfont icon-leetcode: https://leetcode.cn/u/sdjjk/ || LeetCode || '#FF69B4'
+
 
 
 
@@ -339,6 +341,12 @@ footer:
         </a>
         <a href="https://space.bilibili.com/1639097420" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="bilibili" title="bilibili">
           <i class="fab fa-bilibili"></i>
+        </a>
+        <a href="https://codeforces.com/profile/yun123456" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Codeforces" title="Codeforces">
+          <i class="iconfont icon-codeforces"></i>
+        </a>
+        <a href="https://leetcode.cn/u/sdjjk/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LeetCode" title="LeetCode">
+          <i class="iconfont icon-leetcode"></i>
         </a>
       </div>
       <p class="copyright">© 2025 khuatcoungのblog - 所有权利保留</p>
@@ -1179,6 +1187,7 @@ css_prefix: true
 inject:
   head:
     - <link rel="stylesheet" href="/css/custom.css"> 
+    - <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5178128_ttllaclhevo.css">
   bottom:
     - <script defer src="/js/cursor.js"></script> 
     - <script src="/js/sakura.js"></script>

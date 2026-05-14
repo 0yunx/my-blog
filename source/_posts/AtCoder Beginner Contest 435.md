@@ -10,7 +10,7 @@ swiper_index: 1
 cover: https://img.187360.xyz/img/【哲风壁纸】Doro-orgin.png
 ---
 
-<!-- # [AtCoder Beginner Contest 435](https://atcoder.jp/contests/abc435)题解 -->
+# [AtCoder Beginner Contest 435](https://atcoder.jp/contests/abc435)题解
 
 简单说一下，这次的abc题非常简单，出的有很多的模板题，跟前几次的难度不一样除了最后一个难之外，剩下的都还行
 
