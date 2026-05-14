@@ -1329,19 +1329,19 @@ categoryBar:
   row: 5 #显示行数，默认两行，超过行数切换为滚动显示
   message:
     - descr: 1
-      cover: https://img.187360.xyz/img/【哲风壁纸】二次元少女-动漫插画.png
+      cover: https://img.187360.xyz/img/floor.png
     - descr: 2
-      cover: https://img.187360.xyz/img/【哲风壁纸】luidy-二次元.png
+      cover: https://img.187360.xyz/img/luidy.png
     - descr: 3
-      cover: /img/13.png
+      cover: https://img.187360.xyz/img/erciyuan.png
     - descr: 4
-      cover: /img/14.png
+      cover: https://img.187360.xyz/img/luidy.png
     - descr: 5
-      cover: /img/15.png
+      cover: https://img.187360.xyz/img/luidy.png
     - descr: 6
-      cover: /img/16.png
+      cover: https://img.187360.xyz/img/luidy.png
     - descr: 7
-      cover: /img/17.png
+      cover: https://img.187360.xyz/img/luidy.png
     - descr: 8
-      cover: /img/18.png
+      cover: https://img.187360.xyz/img/luidy.png
   custom_css: /css/categorybar.css
