@@ -1312,3 +1312,35 @@ envelope_comment:
   front_matter: #【可选】comments页面的 front_matter 配置
     title: 留言板
     comments: true
+
+
+# hexo-butterfly-categories-card
+# see https://akilar.top/posts/a9131002/
+categoryBar:
+  enable: true # 开关
+  priority: 5 #过滤器优先权
+  enable_page: /categories/ # 应用页面
+  layout: # 挂载容器类型
+    type: id
+    name: recent-posts
+    index: 0
+  column: odd # odd：3列 | even：4列
+  row: 5 #显示行数，默认两行，超过行数切换为滚动显示
+  message:
+    - descr: 1
+      cover: https://img.187360.xyz/img/【哲风壁纸】二次元少女-动漫插画.png
+    - descr: 2
+      cover: https://img.187360.xyz/img/【哲风壁纸】luidy-二次元.png
+    - descr: 3
+      cover: /img/13.png
+    - descr: 4
+      cover: /img/14.png
+    - descr: 5
+      cover: /img/15.png
+    - descr: 6
+      cover: /img/16.png
+    - descr: 7
+      cover: /img/17.png
+    - descr: 8
+      cover: /img/18.png
+  custom_css: /css/categorybar.css
