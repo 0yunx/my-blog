@@ -7,7 +7,7 @@ categories:
     - 音源
 date: 2026-05-14 22:07:00
 swiper_index: 2
-cover: <https://img.187360.xyz/img/二次元-可爱-女生.png>
+cover: https://img.187360.xyz/img/二次元-可爱-女生.png
 ---
 
 # LX Music
