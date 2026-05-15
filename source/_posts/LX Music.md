@@ -2,14 +2,12 @@
 title: LX Music
 abbrlink: 2
 tags:
-
-- LX Music
-    categories:
-- 音源
-    date: 2026-05-14 22:07:00
-    swiper_index: 2
-    cover: <https://img.187360.xyz/img/二次元-可爱-女生.png>
-date: 2026-05-14 19:00:00
+    - LX Music
+categories:
+    - 音源
+date: 2026-05-14 22:07:00
+swiper_index: 2
+cover: <https://img.187360.xyz/img/二次元-可爱-女生.png>
 ---
 
 # LX Music
