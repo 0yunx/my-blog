@@ -512,17 +512,98 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!($article && (isToc || isAnchor))) return
 
-    let $tocLink, $cardToc, autoScrollToc, $tocPercentage, isExpand
+    let $tocLink, $cardToc, autoScrollToc, $tocPercentage, isExpand, $cardTocLayout
+
+    const getTocLinkTextNode = $tocLink => Array.from($tocLink.childNodes).find(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim())
+
+    const createTocToggle = isOpened => {
+      const $toggle = document.createElement('button')
+      $toggle.type = 'button'
+      $toggle.className = 'toc-toggle'
+      $toggle.setAttribute('aria-label', 'Toggle section')
+      $toggle.setAttribute('aria-expanded', isOpened ? 'true' : 'false')
+      $toggle.innerHTML = '<i class="fas fa-chevron-right"></i>'
+      return $toggle
+    }
+
+    const isTocItemOpened = $item => {
+      if ($item.classList.contains('is-manual-collapsed')) return false
+      if ($item.classList.contains('is-manual-open')) return true
+      return isExpand || $item.classList.contains('active')
+    }
+
+    const getVisibleTocLink = $link => {
+      let $item = $link?.parentElement
+      while ($item && $item.matches('.toc-item')) {
+        if ($item.classList.contains('is-manual-collapsed')) {
+          const $parentItem = $item.parentElement?.closest('.toc-item')
+          return $parentItem?.querySelector(':scope > .toc-link') || null
+        }
+        $item = $item.parentElement?.closest('.toc-item')
+      }
+      return $link
+    }
+
+    const syncTocToggleState = () => {
+      if (!$cardToc) return
+      $cardToc.querySelectorAll('.toc-item.has-children').forEach($item => {
+        const isOpened = isTocItemOpened($item)
+        $item.classList.toggle('is-open', isOpened)
+        $item.classList.toggle('is-closed', !isOpened)
+        const $toggle = $item.querySelector(':scope > .toc-link > .toc-toggle')
+        $toggle && $toggle.setAttribute('aria-expanded', isOpened ? 'true' : 'false')
+      })
+    }
+
+    const initTocToggle = () => {
+      if (!$cardToc) return
+      $cardToc.querySelectorAll('.toc-item').forEach($item => {
+        const $child = $item.querySelector(':scope > .toc-child')
+        const $link = $item.querySelector(':scope > .toc-link')
+        if (!$child || !$link) return
+
+        $item.classList.add('has-children')
+
+        if ($link.querySelector(':scope > .toc-toggle')) return
+
+        const $textNode = getTocLinkTextNode($link)
+        if ($textNode) {
+          const $label = document.createElement('span')
+          $label.className = 'toc-link-text'
+          $label.textContent = $textNode.textContent.trim()
+          $link.replaceChild($label, $textNode)
+        }
+
+        const $toggle = createTocToggle(isTocItemOpened($item))
+        $link.appendChild($toggle)
+      })
+
+      syncTocToggleState()
+    }
 
     if (isToc) {
-      const $cardTocLayout = document.getElementById('card-toc')
+      $cardTocLayout = document.getElementById('card-toc')
       $cardToc = $cardTocLayout.querySelector('.toc-content')
       $tocLink = $cardToc.querySelectorAll('.toc-link')
       $tocPercentage = $cardTocLayout.querySelector('.toc-percentage')
       isExpand = $cardToc.classList.contains('is-expand')
 
+      initTocToggle()
+
       // toc元素點擊
       const tocItemClickFn = e => {
+        const toggleTarget = e.target.closest('.toc-toggle')
+        if (toggleTarget) {
+          e.preventDefault()
+          e.stopPropagation()
+          const $tocItem = toggleTarget.closest('.toc-item')
+          const isOpened = isTocItemOpened($tocItem)
+          $tocItem.classList.toggle('is-manual-open', !isOpened)
+          $tocItem.classList.toggle('is-manual-collapsed', isOpened)
+          syncTocToggleState()
+          return
+        }
+
         const target = e.target.closest('.toc-link')
         if (!target) return
 
@@ -598,8 +679,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const currentActive = $tocLink[currentIndex]
           currentActive.classList.add('active')
 
-          setTimeout(() => autoScrollToc(currentActive), 0)
-
           if (!isExpand) {
             let parent = currentActive.parentNode
             while (!parent.matches('.toc')) {
@@ -607,6 +686,13 @@ document.addEventListener('DOMContentLoaded', () => {
               parent = parent.parentNode
             }
           }
+
+          syncTocToggleState()
+
+          const visibleActive = getVisibleTocLink(currentActive)
+          visibleActive && setTimeout(() => autoScrollToc(visibleActive), 0)
+        } else {
+          syncTocToggleState()
         }
       }
     }

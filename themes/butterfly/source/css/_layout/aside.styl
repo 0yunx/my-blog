@@ -276,17 +276,28 @@
           padding-left: 10px
           border-left: 1px solid var(--dark-grey)
 
-      &:not(.is-expand)
+      .toc-child
+        display: none
+
+      &.is-expand
         .toc-child
-          display: none
+          display: block
 
-          +maxWidth900()
-            display: block !important
-
+      &:not(.is-expand)
         .toc-item
-          &.active
-            .toc-child
+          &.active,
+          &.is-manual-open
+            > .toc-child
               display: block
+
+      .toc-item
+        &.is-manual-open
+          > .toc-child
+            display: block
+
+        &.is-manual-collapsed
+          > .toc-child
+            display: none !important
 
       ol,
       li
@@ -300,7 +311,9 @@
         padding-left: 18px
 
       .toc-link
-        display: block
+        display: flex
+        align-items: center
+        width: 100%
         margin: 4px 0
         padding: 1px 8px
         color: var(--toc-link-color)
@@ -313,6 +326,77 @@
         &.active
           background: $theme-toc-color
           color: $toc-active-color
+
+      .toc-link-text
+        min-width: 0
+        flex: 0 1 auto
+
+      .toc-item.has-children
+        > .toc-link
+          .toc-toggle
+            display: inline-flex
+            align-items: center
+            justify-content: center
+            flex: 0 0 auto
+            margin-left: 6px
+            padding: 0
+            border: 0
+            background: transparent
+            color: inherit
+            cursor: pointer
+            transition: transform .2s ease-in-out, color .2s ease-in-out
+
+            i
+              font-size: .75em
+
+            &:hover
+              color: $theme-color
+
+        &.is-open
+          > .toc-link
+            .toc-toggle
+              transform: rotate(90deg)
+
+        &.is-closed
+          > .toc-link
+            .toc-toggle
+              transform: rotate(0)
+
+        > .toc-link.active
+          .toc-toggle
+            color: $toc-active-color
+
+        &.active:not(.is-open)
+          > .toc-link
+            .toc-toggle
+              color: $theme-color
+
+      +maxWidth900()
+        &:not(.is-expand)
+          .toc-item
+            &.active,
+            &.is-manual-open
+              > .toc-child
+                display: block
+
+            &.is-manual-collapsed
+              > .toc-child
+                display: none !important
+
+        &.is-expand
+          .toc-item.is-manual-collapsed
+            > .toc-child
+              display: none !important
+
+      &.is-expand
+        .toc-item.is-manual-collapsed
+          > .toc-child
+            display: none !important
+
+      &.is-expand
+        .toc-item.is-manual-open
+          > .toc-child
+            display: block
 
   .sticky_layout:only-child
     > :first-child
