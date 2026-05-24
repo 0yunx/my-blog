@@ -11,20 +11,6 @@ cover: https://img.187360.xyz/img/动漫女孩-围巾.png
 ---
 # 从 LLM 到 Agent Skill：AI 核心概念完全解析
 
-## 目录
-
-- [一、LLM（大语言模型）](#一llm大语言模型)
-- [二、Token（词元）](#二token词元)
-- [三、Context（上下文）与 Context Window](#三context上下文与-context-window)
-- [四、Prompt（提示词）](#四prompt提示词)
-- [五、Tool（工具）](#五tool工具)
-- [六、MCP（模型上下文协议）](#六mcp模型上下文协议)
-- [七、Agent（智能体）](#七agent智能体)
-- [八、Agent Skill（智能体技能）](#八agent-skill智能体技能)
-- [九、概念体系总览](#九概念体系总览)
-
----
-
 ## 一、LLM（大语言模型）
 
 ### 1.1 定义
