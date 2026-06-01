@@ -1,7 +1,7 @@
 ---
 title: AI核心概念
 tags:
-  - ai
+  - AI
 categories:
   - 教程
 abbrlink: 6

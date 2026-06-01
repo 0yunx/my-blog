@@ -1,7 +1,7 @@
 ---
-title: AI核心概念
+title: fastapi
 tags:
-  - ai
+  - python
 categories:
   - 教程
 abbrlink: 7

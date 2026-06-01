@@ -7,7 +7,7 @@ tags:
 categories:
     - 教程
 date: 2026-5-16 0:30:00
-cover: https://img.187360.xyz/img/jk-制服-动漫女孩.png
+cover: https://img.187360.xyz/img/【哲风壁纸】大眼睛-手绘.png
 ---
 
 ## Docker 核心概念
